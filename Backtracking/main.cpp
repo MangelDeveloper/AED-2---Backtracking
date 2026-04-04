@@ -1,24 +1,13 @@
 #include <iostream>
-#include "AlgoritmoBT.h"
-#include <cmath>
-#include <limits>
+#include "Controlador/Controlador.h"
 
 using namespace std;
 int main() {
-    vector <ControladorBT::Caso> casos = ControladorBT::leer_entrada();
+    double tiempo_poda = Controlador::print_solucion_con_poda();
+    double tiempo_sin_poda = Controlador::print_solucion_sin_poda();
 
-    auto it_casos = casos.begin();
-
-    while (it_casos != casos.end()) {
-        ControladorBT::Caso caso = *it_casos;
-
-        AlgoritmoBT::Resultado resultado = AlgoritmoBT::backtracking(caso);
-
-        if (resultado.voa == numeric_limits<int>::min()) cout << "no solution" << endl;
-        else cout << resultado.voa << endl;
-
-        ++it_casos;
-    }
+    cout << "Tiempo con poda: " << tiempo_poda << " segundos."<< endl;
+    cout << "Tiempo sin poda: " << tiempo_sin_poda << " segundos." << endl;
 
     return 0;
 }
